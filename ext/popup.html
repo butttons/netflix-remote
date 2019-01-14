@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      section {
+        width: 270px;
+        text-align: center;
+      }
+      button.btn{ 
+        outline: none;
+        background-color: #546E7A;
+        border-radius: 5px;
+        color: #ECEFF1;
+        width: 150px;
+        border: none;
+        padding: 10px;
+        transition: background-color 0.2s ease;
+        cursor: pointer;
+      }
+      button.btn:hover{
+        background-color: #607D8B;
+      }
+      .connection{
+        padding: 10px 0;
+        text-align: center;
+        margin: 5px 0;
+      }
+      .connection--success{
+        color: #1B5E20;
+        background: #81C784;
+        border-bottom: 1px solid #43A047;
+      }
+      .connection--warn {
+        color: #F57F17;
+        background: #FFF176;
+        border-bottom: 1px solid #FDD835;
+      }
+    </style>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <section>
+      <h1>Netflix Remote</h1>
+      <button id="refresh" class="btn">Refresh</button>
+      <div class="connection" id="connection-status"></div>
+      <pre id="status"></pre>
+      <img id="qr-code" />
+    </section>
+  </body>
+</html>

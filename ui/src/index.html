@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Netflix Remote</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <textarea id="incoming"></textarea>
+    <button type="submit" id="submit">submit</button>
+
+    <textarea id="send-data"></textarea>
+    <button type="submit" id="data-submit">data submit</button>
+    
+    <pre id="outgoing"></pre>
+    <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
+    <canvas id="canvas" hidden></canvas>
+    <div id="output" hidden>
+        <div id="outputMessage">No QR code detected.</div>
+        <div hidden><b>Data:</b> <span id="outputData"></span></div>
+    </div>
+    
+    <script src="./index.js"></script>
+</body>
+</html>

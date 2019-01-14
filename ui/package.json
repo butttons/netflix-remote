@@ -1,0 +1,23 @@
+{
+    "name": "netflix-remote-ui",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "parcel src/index.html",
+        "build": "parcel build src/index.html"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "parcel-bundler": "^1.11.0"
+    },
+    "dependencies": {
+        "jsqr": "^1.1.1",
+        "simple-peer": "^9.2.0",
+        "socket.io-client": "^2.2.0",
+        "socket.io-p2p": "^2.2.0"
+    }
+}

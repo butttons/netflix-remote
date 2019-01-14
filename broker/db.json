@@ -1,0 +1,216 @@
+{
+  "peers": [
+    {
+      "socketId": "5cbeG3dJSV8JMLwWAAAA",
+      "id": "2cf7a1f8-c0fe-4245-bef0-372df38c8ae7"
+    },
+    {
+      "socketId": "vgsIPPakuNL5Tom_AAAC",
+      "id": "96b5e159-8ece-411a-a9e5-93d5fcaffee0"
+    },
+    {
+      "socketId": "nTy8Irjpz9_aLbTrAAAD",
+      "id": "74166fa0-80e2-44b5-8f60-dd44ccda2ac4",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 5197894277352900665 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 43749 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 43749 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 43749 typ srflx raddr 192.168.0.105 rport 43749 generation 0 network-cost 999\r\na=ice-ufrag:yYcX\r\na=ice-pwd:/687R+qzwn06QjejorBzl+um\r\na=fingerprint:sha-256 2F:7F:44:2D:C3:BE:9A:C5:92:C5:7F:46:A3:98:80:21:E0:BF:C8:BC:CF:E3:3D:5D:C3:4E:4A:E4:1E:6B:EE:D3\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    },
+    {
+      "socketId": "PyuAuNVhEqSQnG5eAAAE",
+      "id": "67939324-5b61-48ae-95b2-ee6a07192709"
+    },
+    {
+      "socketId": "lXT_IAvaoo8wy4DuAAAE",
+      "id": "8338b9a4-9a07-4daf-bc86-13ba03d97c74",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 1771463307131883827 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 36088 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 36088 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 36088 typ srflx raddr 192.168.0.105 rport 36088 generation 0 network-cost 999\r\na=ice-ufrag:vLDt\r\na=ice-pwd:X368c1LTrpYv8orFAPI/XJP9\r\na=fingerprint:sha-256 8C:1A:40:A4:F1:C5:91:09:2C:52:E3:EF:0D:7F:8F:D5:7D:39:43:5C:D9:D0:CD:04:45:03:68:50:14:43:01:F8\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    },
+    {
+      "socketId": "_BGf3oixvRrb0SCxAAAL",
+      "id": "19bb72b8-ed32-4caa-a78e-ad0f062c072f"
+    },
+    {
+      "socketId": "2jnipthxJBtH83ATAAAB",
+      "id": "62128b3b-07ce-4343-ab27-721b664ca7e7"
+    },
+    {
+      "socketId": "HvTZFDBJf6_BRO-iAAAG",
+      "id": "df90c5cb-4e50-4f2b-abef-451af6734574"
+    },
+    {
+      "socketId": "UKuoHX2C060iPzNzAAAH",
+      "id": "e5b7a307-42fa-4587-8b08-5453ac652744"
+    },
+    {
+      "socketId": "6HAa0VKVZbcHGT_HAAAI",
+      "id": "b6448996-2909-4f28-a13a-8a4cf1e38cad"
+    },
+    {
+      "socketId": "AYWLrzcgp-oAmmIYAAAF",
+      "id": "ba2799e4-bbbe-4b07-a09b-6f35a547a087",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 1998875014179809452 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 51881 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 51881 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 51881 typ srflx raddr 192.168.0.105 rport 51881 generation 0 network-cost 999\r\na=ice-ufrag:8rKV\r\na=ice-pwd:mlkkBHEUD3sCdYjk/8K7/43T\r\na=fingerprint:sha-256 C6:9C:97:09:70:45:3F:F7:D4:E0:A0:10:80:DF:79:EB:12:E1:A0:C0:2B:B5:30:6A:F5:52:62:90:F1:51:BE:29\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    },
+    {
+      "socketId": "uc9NCUigHrWU0lhOAAAL",
+      "id": "0baaf1bc-32d6-44b5-b1e0-21b69d7807db"
+    },
+    {
+      "socketId": "X0pK-PU46O_tjcRKAAAA",
+      "id": "21c9fc7c-69f3-4284-a9e3-b3f1d762c8a4"
+    },
+    {
+      "socketId": "ThHGMENl3yFtu1djAAAB",
+      "id": "7c17703e-6af2-44dc-a062-dcc809ada230"
+    },
+    {
+      "socketId": "duIKtnqs2xfO-_t0AAAA",
+      "id": "103ff21a-7591-415f-a90a-dbff5917f4f0"
+    },
+    {
+      "socketId": "xOMsb9as8mknlonEAAAB",
+      "id": "c8e654dc-2d68-4b7b-a6b3-90f93e5db7c5"
+    },
+    {
+      "socketId": "RrPE26BVHXnrnbL4AAAC",
+      "id": "a1fabbe9-9eed-4a0b-b3f4-7959769bfba4"
+    },
+    {
+      "socketId": "ZurUTE8vQoOkQ5wZAAAD",
+      "id": "2ef3dd71-8d75-4668-a2d3-f18f5e7624c4",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 6672674735652286736 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 53634 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 53634 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 53634 typ srflx raddr 192.168.0.105 rport 53634 generation 0 network-cost 999\r\na=ice-ufrag:YBBm\r\na=ice-pwd:Rwr/hDY+MRMmbmzRejI5MiDt\r\na=fingerprint:sha-256 2F:62:60:C2:BB:A5:1F:21:C5:96:E5:B2:3F:51:D2:0B:8A:4B:CB:41:75:07:E9:C6:94:92:A4:82:19:91:CA:60\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    },
+    {
+      "socketId": "W5e9RaVt9ud9tKYOAAAG",
+      "id": "96d96b4f-b386-4e26-ab41-505648983a9b"
+    },
+    {
+      "socketId": "xhtoQVw2erisPfruAAAI",
+      "id": "4d934be4-1048-4bf0-a26e-acc81c70f5ac",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 1412086674757399312 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 36186 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 36186 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 36186 typ srflx raddr 192.168.0.105 rport 36186 generation 0 network-cost 999\r\na=ice-ufrag:T585\r\na=ice-pwd:aJ1mHa9AgPnuQ6M30E9yXUPe\r\na=fingerprint:sha-256 C5:D4:A5:AD:4D:D4:FA:FC:08:A9:3F:83:F5:23:47:B3:5F:51:2F:98:33:41:B4:7E:0F:9C:57:27:01:13:6D:83\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    },
+    {
+      "socketId": "9YZ0AYASvTzXiwdfAAAA",
+      "id": "2c092bef-6b79-46eb-9c68-b9658af8e77a"
+    },
+    {
+      "socketId": "pq_UUyPPDnJZx59KAAAB",
+      "id": "8341290d-6054-43b5-9019-4b9d31481e5d"
+    },
+    {
+      "socketId": "npH5Rupo66S0nQ0jAAAC",
+      "id": "e0de196c-a20f-490f-8d9c-7abe8376fc65"
+    },
+    {
+      "socketId": "J1cdwhPrkxOd0C4oAAAD",
+      "id": "413de06f-79fa-408f-94ff-b2e5824253d8"
+    },
+    {
+      "socketId": "oISxxLkv-VxaypoLAAAE",
+      "id": "e90a5bb8-ab24-47ef-8a2c-d2c4f8a9b6b7",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 5602804233006226396 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 35867 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 35867 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 35867 typ srflx raddr 192.168.0.105 rport 35867 generation 0 network-cost 999\r\na=ice-ufrag:FH1o\r\na=ice-pwd:iUz7OSmFmii/loN/8/xjzMOF\r\na=fingerprint:sha-256 D4:CD:B0:87:1A:DF:0B:D8:E7:7C:1A:F9:D0:C7:C7:1F:63:10:53:CD:A3:71:AF:D9:47:78:45:6C:A4:8A:76:10\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    },
+    {
+      "socketId": "VTjiy_s0NSy1Q-QMAAAC",
+      "id": "d697f181-6108-4e6c-a8ae-62a29a44b209"
+    },
+    {
+      "socketId": "10WETKr-wiyjMagDAAAD",
+      "id": "90e2f44b-7fdc-4820-ae62-197d532d096e",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 1519812609651766460 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 59927 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 59927 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 59927 typ srflx raddr 192.168.0.105 rport 59927 generation 0 network-cost 999\r\na=ice-ufrag:yPzx\r\na=ice-pwd:KQUZULatbkbrxii3zWL6CXS5\r\na=fingerprint:sha-256 71:A9:D7:35:5C:EE:50:81:8A:CD:23:45:AE:79:B2:34:91:E4:6E:60:73:56:C2:84:1D:F3:AB:1C:A0:70:26:19\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    },
+    {
+      "socketId": "ZvfbHutD5RaEIhn7AAAB",
+      "id": "ebf846a6-7a37-44ae-95ec-7d321c28c0ea"
+    },
+    {
+      "socketId": "xInNhfkMs0CD-G9hAAAD",
+      "id": "01f142c9-641c-4d18-8546-822e0ff013ab"
+    },
+    {
+      "socketId": "2pvSBpQcfEHXY4HjAAAA",
+      "id": "0c495a5f-3415-4ba6-bde5-b1fb596c93a8"
+    },
+    {
+      "socketId": "nXqmiZJVbo-88nf4AAAA",
+      "id": "f55fa2c6-5d04-47d7-b0bc-d7cb01ff98f3"
+    },
+    {
+      "socketId": "Kabts0-0gF8hfJuCAAAB",
+      "id": "a0e3e748-de0e-47ff-be28-e22249e52547"
+    },
+    {
+      "socketId": "PqbEhS-IEIUtqqgLAAAA",
+      "id": "df75e285-538c-489d-ac7b-84f7e0d0bd3d"
+    },
+    {
+      "socketId": "ADQDwvkshlgaLV2TAAAB",
+      "id": "b40ec4c7-5462-4027-9566-8aad68177392"
+    },
+    {
+      "socketId": "tbOU1AW1bvCKbsSOAAAC",
+      "id": "5aa848a3-fbdd-46ab-b762-650d51bba096"
+    },
+    {
+      "socketId": "IBiKm5Sp4tyweqEVAAAA",
+      "id": "1355a7b5-7a65-4aa5-aef7-b0cfae2e5ff8"
+    },
+    {
+      "socketId": "TtDuEda0LKdtw9rhAAAB",
+      "id": "b57372f2-30de-47fc-a793-057261564661"
+    },
+    {
+      "socketId": "YnqFvB_4bnG7D4bxAABM",
+      "id": "8c2a92a5-1169-4ee4-83be-28cccee52fab",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 2346412022457603322 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 45682 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 45682 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 45682 typ srflx raddr 192.168.0.105 rport 45682 generation 0 network-cost 999\r\na=ice-ufrag:3a8H\r\na=ice-pwd:G/Zt8PdHXnz+ZMLmvg7DpiFC\r\na=fingerprint:sha-256 02:7D:94:43:F4:72:15:CF:F6:AF:A6:3B:77:65:4B:15:B6:CF:89:88:B9:DA:65:29:0C:8D:B8:1E:B3:65:F3:10\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    },
+    {
+      "socketId": "n3j9RQyDJqF6Rcm9AABN",
+      "id": "8fa10418-3e6f-463f-b554-a42b2f6b8896",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 4076730768799892065 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 56146 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 56146 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 56146 typ srflx raddr 192.168.0.105 rport 56146 generation 0 network-cost 999\r\na=ice-ufrag:Xdiv\r\na=ice-pwd:U5FKbyhJwBmY05Jg0ykThEWX\r\na=fingerprint:sha-256 73:B3:28:D6:A0:32:90:31:68:6D:F3:78:E5:8E:AA:ED:B8:F6:42:46:D6:82:AE:BD:FA:80:98:73:1E:78:B6:A0\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    },
+    {
+      "socketId": "7-M_5-AmnK3ANr-xAABO",
+      "id": "4dc5d93e-22fb-450c-92a8-806088ea607c",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 8612291818107497368 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 49226 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 49226 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 49226 typ srflx raddr 192.168.0.105 rport 49226 generation 0 network-cost 999\r\na=ice-ufrag:6+WS\r\na=ice-pwd:mUUw8cDXDvAuVL3Wm8tBIouN\r\na=fingerprint:sha-256 25:74:7B:5F:1A:B4:35:D6:90:BE:64:8A:3C:30:75:70:9A:86:CA:75:F3:F1:EF:02:11:22:75:19:0F:11:F6:B1\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    },
+    {
+      "socketId": "NGd9wwqQilAncmVfAABo",
+      "id": "74f23e8a-73d6-49d0-963a-dd5a378c4239"
+    },
+    {
+      "socketId": "GXM17RVAHYZLk2pXAABr",
+      "id": "5aa0b8e0-320b-4662-b818-13b75e135047",
+      "signalInit": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 4010001896093105906 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 39478 DTLS/SCTP 5000\r\nc=IN IP4 157.119.215.172\r\na=candidate:1221703924 1 udp 2113937151 192.168.0.105 39478 typ host generation 0 network-cost 999\r\na=candidate:842163049 1 udp 1677729535 157.119.215.172 39478 typ srflx raddr 192.168.0.105 rport 39478 generation 0 network-cost 999\r\na=ice-ufrag:RRfp\r\na=ice-pwd:izsxDKPk4dalnPJGm9/FWv3O\r\na=fingerprint:sha-256 68:7C:14:DF:CE:3B:F1:CB:B4:8E:27:27:A8:36:DE:98:1E:C9:EB:D4:62:90:92:6C:A5:81:66:5D:68:F5:82:97\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n"
+      }
+    }
+  ]
+}
