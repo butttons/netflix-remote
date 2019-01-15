@@ -28,3 +28,7 @@ body {
 .jump:hover {
     transform: translateY(-5px);
 }
+a {
+    color: #fff;
+    text-decoration: none;
+}

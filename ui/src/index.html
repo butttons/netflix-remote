@@ -36,10 +36,6 @@
             </transition>
             <transition enter-active-class="animated slideInLeft" enter-active-class="animated slideOutRight">
                 <div v-show="peerConnected" class="pv3">
-                    <!--
-                    <input type="text" class="bn db center w-90 br2 pa2 tc outline-0 o-90 glow" placeholder="Search" v-model='searchText'/>
-                    <button class="bn mv2 pv3 w5 br2 o-60 glow pointer ttu bg-light-silver black" @click='searchNetflix'>Search</button>
-                    -->
                     <div class="grid ph2">
                         <button class="bn db br2 pa2 tc outline-0 white bg-red jump" v-for="ctrl, index in controls" :key="index" @click='videoAction(ctrl.action)'>
                             <i class="material-icons f1">{{ ctrl.icon }}</i>
@@ -62,6 +58,11 @@
                 </div>
             </transition>
         </section>
+        <footer class="absolute tc pv2 bottom-0 w-100">
+            <a href="https://github.com/butttons/netflix-remote" target="_blank">
+                <img src="./github.png">
+            </a>
+        </footer>
     </div>      
     <script src="./index.js"></script>
 </body>
