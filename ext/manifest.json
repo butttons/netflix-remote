@@ -1,6 +1,6 @@
 {
     "name": "Netflix Remote",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Remote for Netflix!",
     "permissions": [ "declarativeContent", "storage" ],
     "manifest_version": 2,

@@ -8,19 +8,13 @@ function sendPayload(peer, data) {
 function clickButton(selector) {
     try {
         document.querySelector(selector).click();
-    } catch (e) {
-        console.log(e);
-    }
+    } catch (e) {}
 }
 function doesExist(selector) {
     return document.querySelector(selector) !== null;
 }
 function actionHandler(data, peer) {
     switch (data.action) {
-        case 'search':
-            const { text } = data.payload;
-            window.location = '/';
-            break;
         case 'video_action':
             if (!isWatchingVideo()) {
                 sendPayload(peer, { error: 'Not watching video' });
@@ -72,7 +66,6 @@ function initPeer() {
         peerInit.destroy();
         peer = new SimplePeer({ initiator: true, trickle: false });
     }
-    // const socket = io('http://localhost:3030/');
     const socket = io('https://netflix-signal.herokuapp.com/');
     const state = {
         socket: false,
@@ -80,29 +73,19 @@ function initPeer() {
         peerId: false,
         remotePeer: false
     };
-    const handler = {
-        get: function() {
-            return true;
-        },
-        set: function(obj, prop, value) {
-            console.log(prop, value);
-            return true;
-        }
-    };
-    const stateP = new Proxy(state, handler);
     socket.on('connect', function() {
-        stateP.socket = socket.id;
+        state.socket = socket.id;
     });
     socket.on('answer-signal', function(data) {
-        stateP.remotePeer = data;
+        state.remotePeer = data;
         peer.signal(data);
     });
     socket.on('peer-id', function(data) {
         chrome.runtime.sendMessage({ peerId: data });
-        stateP.peerId = data;
+        state.peerId = data;
     });
     peer.on('signal', function(data) {
-        stateP.signal = data;
+        state.signal = data;
         socket.emit('peer', data);
     });
     peer.on('connect', function() {
@@ -111,7 +94,6 @@ function initPeer() {
     });
     peer.on('data', function(data) {
         const dataString = data.toString();
-        console.log('data', dataString);
         if (dataString[0] === '{') {
             const data = JSON.parse(dataString);
             actionHandler(data, peer);
@@ -119,11 +101,9 @@ function initPeer() {
     });
     peer.on('error', function(err) {
         chrome.storage.local.set({ peerConnected: false });
-        console.log('error', err);
     });
     peer.on('close', function(err) {
         chrome.storage.local.set({ peerConnected: false });
-        console.log('error', err);
     });
 
     return peer;

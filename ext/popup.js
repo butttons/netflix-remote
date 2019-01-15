@@ -51,8 +51,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#peer-id').addEventListener('focus', function(ev) {
         ev.target.select();
     });
-    /*
-    chrome.storage.local.get([ 'peerId' ], function(data) {
-        document.querySelector('#status').textContent = JSON.stringify(data);
-    }); */
 });
