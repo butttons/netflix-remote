@@ -1,6 +1,95 @@
+let peerInit;
+function isWatchingVideo() {
+    return /watch/.test(document.location.href);
+}
+function sendPayload(peer, data) {
+    peer.send(JSON.stringify(data));
+}
+function clickButton(selector) {
+    try {
+        document.querySelector(selector).click();
+    } catch (e) {
+        console.log(e);
+    }
+}
+function doesExist(selector) {
+    return document.querySelector(selector) !== null;
+}
+function actionHandler(data, peer) {
+    switch (data.action) {
+        case 'search':
+            const { text } = data.payload;
+            window.location = '/';
+            break;
+        case 'video_action':
+            if (!isWatchingVideo()) {
+                sendPayload(peer, { error: 'Not watching video' });
+            } else {
+                const { action } = data.payload;
+                let success = false;
+                switch (action) {
+                    case 'play_video':
+                        if (!doesExist('.button-nfplayerPlay')) {
+                            sendPayload(peer, { error: 'Already playing' });
+                        } else {
+                            clickButton('.button-nfplayerPlay');
+                            success = true;
+                        }
+                        break;
+                    case 'pause_video':
+                        if (!doesExist('.button-nfplayerPause')) {
+                            sendPayload(peer, { error: 'Already paused' });
+                        } else {
+                            clickButton('.button-nfplayerPause');
+                            success = true;
+                        }
+                        break;
+                    case 'forward_video':
+                        clickButton('.button-nfplayerFastForward');
+                        success = true;
+                        break;
+                    case 'replay_video':
+                        clickButton('.button-nfplayerBackTen');
+                        success = true;
+                        break;
+                    case 'next_episode':
+                        clickButton('.button-nfplayerNextEpisode');
+                        success = true;
+                    case 'fullscreen_video':
+                        if (!doesExist('.button-nfplayerFullscreen')) {
+                            sendPayload(peer, { error: 'Already fullscreen' });
+                        } else {
+                            clickButton('.button-nfplayerFullscreen');
+                            success = true;
+                        }
+                        break;
+                    case 'fullscreen_exit_video':
+                        if (!doesExist('.button-nfplayerWindowed')) {
+                            sendPayload(peer, { error: 'Already windowed' });
+                        } else {
+                            clickButton('.button-nfplayerWindowed');
+                            success = true;
+                        }
+                        break;
+                }
+                if (success) {
+                    sendPayload(peer, { success: true });
+                }
+            }
+            break;
+    }
+}
 function initPeer() {
-    const peer = new SimplePeer({ initiator: true, trickle: false });
-    const socket = io('http://localhost:3030');
+    let peer;
+    if (!peerInit) {
+        peer = new SimplePeer({ initiator: true, trickle: false });
+        peerInit = peer;
+    } else {
+        peerInit.destroy();
+        peer = new SimplePeer({ initiator: true, trickle: false });
+    }
+    // const socket = io('http://localhost:3030/');
+    const socket = io('https://netflix-signal.herokuapp.com/');
     const state = {
         socket: false,
         signal: false,
@@ -25,9 +114,7 @@ function initPeer() {
         peer.signal(data);
     });
     socket.on('peer-id', function(data) {
-        chrome.runtime.sendMessage({ peerId: data }, function(response) {
-            console.log(response);
-        });
+        chrome.runtime.sendMessage({ peerId: data });
         stateP.peerId = data;
     });
     peer.on('signal', function(data) {
@@ -36,14 +123,15 @@ function initPeer() {
     });
     peer.on('connect', function() {
         chrome.storage.local.set({ peerConnected: true });
-        chrome.runtime.sendMessage({ peerConnected: true }, function(response) {
-            console.log(response);
-        });
-        console.log('CONNECT');
-        peer.send('whatever' + Math.random());
+        chrome.runtime.sendMessage({ peerConnected: true });
     });
     peer.on('data', function(data) {
-        console.log('data: ' + data);
+        const dataString = data.toString();
+        console.log('data', dataString);
+        if (dataString[0] === '{') {
+            const data = JSON.parse(dataString);
+            actionHandler(data, peer);
+        }
     });
     peer.on('error', function(err) {
         chrome.storage.local.set({ peerConnected: false });

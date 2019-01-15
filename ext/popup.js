@@ -9,21 +9,27 @@ function initPeer() {
     });
 }
 function peerDisconnected() {
-    document.querySelector('#connection-status').style.display = 'none';
+    document.querySelector('#qr-code').hidden = false;
+    document.querySelector('#helper-text').hidden = false;
+    document.querySelector('#peer-id').hidden = false;
+    document.querySelector('#connection-status').hidden = true;
 }
 function peerConnected() {
     const status = document.querySelector('#connection-status');
-    status.style.display = 'inherit';
+    document.querySelector('#helper-text').hidden = true;
+    document.querySelector('#peer-id').hidden = true;
+    status.hidden = false;
     status.textContent = 'Connected';
     status.classList.add('connection--success');
 }
 chrome.runtime.onMessage.addListener(function(msg, sender, response) {
-    // document.querySelector('#status').textContent = JSON.stringify(msg);
     if (Object.keys(msg).includes('peerId')) {
+        document.querySelector('#peer-id').value = msg.peerId;
         document.querySelector('#qr-code').src = qrCode(msg.peerId);
     }
     if (Object.keys(msg).includes('peerConnected')) {
-        document.querySelector('#qr-code').src = '';
+        document.querySelector('#qr-code').hidden = true;
+        document.querySelector('#peer-id').hidden = true;
         peerConnected();
     }
 });
@@ -41,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#refresh').addEventListener('click', function() {
         peerDisconnected();
         initPeer();
+    });
+    document.querySelector('#peer-id').addEventListener('focus', function(ev) {
+        ev.target.select();
     });
     /*
     chrome.storage.local.get([ 'peerId' ], function(data) {

@@ -1,124 +1,181 @@
+const jsQR = require('jsqr');
 const Peer = require('simple-peer');
 const io = require('socket.io-client');
-const peer = new Peer({ initiator: false, trickle: false });
-const socket = io('http://localhost:3030');
-const jsQR = require('jsqr');
-
 const state = {
-    socket: false,
-    signal: false,
-    peerId: false,
-    remotePeer: false
-};
-const handler = {
-    get: function() {
-        return true;
+    isConnected: false,
+    isCamera: false,
+    peerId: '',
+    error: {
+        show: false,
+        message: ''
     },
-    set: function(obj, prop, value) {
-        console.log(prop, value);
-        document.querySelector('#outgoing').textContent += `${prop}: ${value}\n`;
-        return true;
-    }
+    qr: {
+        output: false,
+        data: false
+    },
+    stream: false,
+    video: false,
+    log: [],
+    socket: false,
+    peer: false,
+    peerConnected: false,
+    searchText: '',
+    controls: [
+        {
+            action: 'play_video',
+            icon: 'play_arrow'
+        },
+        {
+            action: 'pause_video',
+            icon: 'pause'
+        },
+        {
+            action: 'replay_video',
+            icon: 'replay_10'
+        },
+        {
+            action: 'forward_video',
+            icon: 'forward_10'
+        },
+        {
+            action: 'fullscreen_video',
+            icon: 'fullscreen'
+        },
+        {
+            action: 'fullscreen_exit_video',
+            icon: 'fullscreen_exit'
+        },
+        {
+            action: 'next_episode',
+            icon: 'fast_forward'
+        }
+    ]
 };
-const stateP = new Proxy(state, handler);
-
-socket.on('connect', () => {
-    stateP.socket = socket.id;
-});
-socket.on('incoming-signal', (data) => {
-    console.log('incoming', data);
-    peer.signal(data);
-});
-
-peer.on('signal', function(data) {
-    stateP.signal = data;
-    const id = document.querySelector('#incoming').value;
-    socket.emit('set-answer', { data, id });
-});
-
-peer.on('connect', function() {
-    console.log('CONNECT');
-    peer.send('whatever' + Math.random());
-});
-
-peer.on('data', function(data) {
-    console.log('data: ' + data);
-});
-
-peer.on('error', function(err) {
-    console.log('error', err);
-});
-peer.on('close', function(err) {
-    console.log('close', err);
-});
-
-document.querySelector('#submit').addEventListener('click', () => {
-    const id = document.querySelector('#incoming').value;
-    socket.emit('get-signal', id);
-});
-
-document.querySelector('#data-submit').addEventListener('click', () => {
-    const id = document.querySelector('#send-data').value;
-    peer.send(id);
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    var video = document.createElement('video');
-    var canvasElement = document.getElementById('canvas');
-    var canvas = canvasElement.getContext('2d');
-    var loadingMessage = document.getElementById('loadingMessage');
-    var outputContainer = document.getElementById('output');
-    var outputMessage = document.getElementById('outputMessage');
-    var outputData = document.getElementById('outputData');
-    function drawLine(begin, end, color) {
-        canvas.beginPath();
-        canvas.moveTo(begin.x, begin.y);
-        canvas.lineTo(end.x, end.y);
-        canvas.lineWidth = 4;
-        canvas.strokeStyle = color;
-        canvas.stroke();
-    }
-
-    // Use facingMode: environment to attemt to get the front camera on phones
-    navigator.mediaDevices
-        .getUserMedia({ video: { facingMode: 'environment' } })
-        .then(function(stream) {
-            video.srcObject = stream;
-            video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
-            video.play();
-            requestAnimationFrame(tick);
-        })
-        .catch((e) => {
-            document.querySelector('#outgoing').textContent = e.message;
+const app = new Vue({
+    el: '#app',
+    data() {
+        return state;
+    },
+    mounted() {
+        const peer = new Peer({ initiator: false, trickle: false });
+        // const socket = io('http://localhost:3030/');
+        const socket = io('https://netflix-signal.herokuapp.com/');
+        this.socket = socket;
+        this.peer = peer;
+        socket.on('connect', () => {
+            console.log(socket.id);
         });
+        socket.on('incoming-signal', (data) => {
+            peer.signal(data);
+        });
+        peer.on('signal', (data) => {
+            socket.emit('set-answer', { signal: data, id: this.peerId });
+        });
+        peer.on('connect', () => {
+            this.peerConnected = true; //peer.send('whatever' + Math.random());
+        });
+        peer.on('data', (data) => {
+            console.log('data: ', data.toString());
+            this.handleIncoming(data.toString());
+        });
+        peer.on('error', (e) => {
+            this.peerConnected = false;
+            this.showError(e.message);
+        });
+        peer.on('close', function(err) {
+            this.peerConnected = false;
+        });
+    },
+    watch: {
+        qr(newVal, oldVal) {
+            this.log.push(newVal);
+            if (newVal.output) {
+                this.peerId = newVal.data;
+            }
+        }
+    },
+    methods: {
+        sendPeer(data) {
+            this.peer.send(JSON.stringify(data));
+        },
+        showError(message) {
+            this.error.show = true;
+            this.error.message = message;
+        },
+        scanCode() {
+            const video = this.$refs.video;
+            navigator.mediaDevices
+                .getUserMedia({ video: { facingMode: 'environment' } })
+                .then((stream) => {
+                    this.stream = stream;
+                    this.isCamera = true;
+                    video.srcObject = stream;
+                    video.setAttribute('playsinline', true);
+                    video.play();
+                    requestAnimationFrame(tick);
+                })
+                .catch((e) => {
+                    this.showError(e.message);
+                });
+        },
+        connectRemote() {
+            this.socket.emit('get-signal', this.peerId);
+        },
+        searchNetflix() {
+            this.sendPeer({
+                action: 'search',
+                payload: {
+                    text: this.searchText
+                }
+            });
+        },
+        videoAction(action) {
+            this.sendPeer({
+                action: 'video_action',
+                payload: {
+                    action
+                }
+            });
+        },
+        handleIncoming(dataString) {
+            const data = JSON.parse(dataString);
+            if (Object.keys(data).includes('error')) {
+                this.showError(data.error);
+            }
+            if (Object.keys(data).includes('success')) {
+                this.error.show = false;
+            }
+        }
+    }
+});
 
-    function tick() {
-        loadingMessage.innerText = '⌛ Loading video...';
+function tick() {
+    try {
+        const video = app.$refs.video;
         if (video.readyState === video.HAVE_ENOUGH_DATA) {
-            loadingMessage.hidden = true;
-            canvasElement.hidden = false;
-            outputContainer.hidden = false;
-
-            canvasElement.height = video.videoHeight;
-            canvasElement.width = video.videoWidth;
+            const canvasElement = app.$refs.canvas;
+            const canvas = canvasElement.getContext('2d');
             canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-            var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
-            var code = jsQR(imageData.data, imageData.width, imageData.height, {
+            const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height, {
                 inversionAttempts: 'dontInvert'
             });
             if (code) {
-                drawLine(code.location.topLeftCorner, code.location.topRightCorner, '#FF3B58');
-                drawLine(code.location.topRightCorner, code.location.bottomRightCorner, '#FF3B58');
-                drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, '#FF3B58');
-                drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, '#FF3B58');
-                outputMessage.hidden = true;
-                outputData.parentElement.hidden = false;
-                outputData.innerText = code.data;
+                app.stream.getTracks().forEach((track) => track.stop());
+                app.isCamera = false;
+                app.qr.output = true;
+                app.qr.data = code.data;
+                app.peerId = code.data;
             } else {
-                outputMessage.hidden = false;
-                outputData.parentElement.hidden = true;
+                app.qr.output = false;
+                app.qr.data = '';
             }
         }
-        requestAnimationFrame(tick);
+        if (!app.qr.output) {
+            requestAnimationFrame(tick);
+        }
+    } catch (e) {
+        app.error.show = true;
+        app.error.message = e.message;
     }
-});
+}

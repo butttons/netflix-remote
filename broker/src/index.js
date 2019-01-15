@@ -9,12 +9,14 @@ io.on('connection', (socket) => {
         socket.emit('peer-id', peer.id);
     });
     socket.on('get-signal', (data) => {
+        console.log('data:', data);
         const signal = handles.getSignal(data);
         socket.emit('incoming-signal', signal);
     });
     socket.on('set-answer', (data) => {
+        console.log('data:', data);
         const rec = peers.getById(data.id).value();
-        io.to(rec.socketId).emit('answer-signal', data.data);
+        io.to(rec.socketId).emit('answer-signal', data.signal);
     });
     socket.on('disconnect', () => {
         handles.deletePeer(socket.id);
