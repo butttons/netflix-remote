@@ -19,6 +19,7 @@ There are often times I want to watch a movie from my bed, on my PC.
 
 ## Caveats:
 - The connection will be broken if either of the pages, the netflix window or the interface are reloaded. You would need to establish a new connection.
+- There may be debug messages in the extension, in the console, ignore them. I've removed those in the 1.1 version now.
 
 ## Development:
 - Chrome extension: `ext` folder
