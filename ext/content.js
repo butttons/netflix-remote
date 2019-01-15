@@ -55,22 +55,6 @@ function actionHandler(data, peer) {
                     case 'next_episode':
                         clickButton('.button-nfplayerNextEpisode');
                         success = true;
-                    case 'fullscreen_video':
-                        if (!doesExist('.button-nfplayerFullscreen')) {
-                            sendPayload(peer, { error: 'Already fullscreen' });
-                        } else {
-                            clickButton('.button-nfplayerFullscreen');
-                            success = true;
-                        }
-                        break;
-                    case 'fullscreen_exit_video':
-                        if (!doesExist('.button-nfplayerWindowed')) {
-                            sendPayload(peer, { error: 'Already windowed' });
-                        } else {
-                            clickButton('.button-nfplayerWindowed');
-                            success = true;
-                        }
-                        break;
                 }
                 if (success) {
                     sendPayload(peer, { success: true });

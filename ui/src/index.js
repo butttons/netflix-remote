@@ -38,14 +38,6 @@ const state = {
             icon: 'forward_10'
         },
         {
-            action: 'fullscreen_video',
-            icon: 'fullscreen'
-        },
-        {
-            action: 'fullscreen_exit_video',
-            icon: 'fullscreen_exit'
-        },
-        {
             action: 'next_episode',
             icon: 'fast_forward'
         }
@@ -58,13 +50,9 @@ const app = new Vue({
     },
     mounted() {
         const peer = new Peer({ initiator: false, trickle: false });
-        // const socket = io('http://localhost:3030/');
         const socket = io('https://netflix-signal.herokuapp.com/');
         this.socket = socket;
         this.peer = peer;
-        socket.on('connect', () => {
-            console.log(socket.id);
-        });
         socket.on('incoming-signal', (data) => {
             peer.signal(data);
         });
@@ -72,10 +60,9 @@ const app = new Vue({
             socket.emit('set-answer', { signal: data, id: this.peerId });
         });
         peer.on('connect', () => {
-            this.peerConnected = true; //peer.send('whatever' + Math.random());
+            this.peerConnected = true;
         });
         peer.on('data', (data) => {
-            console.log('data: ', data.toString());
             this.handleIncoming(data.toString());
         });
         peer.on('error', (e) => {
@@ -85,14 +72,6 @@ const app = new Vue({
         peer.on('close', function(err) {
             this.peerConnected = false;
         });
-    },
-    watch: {
-        qr(newVal, oldVal) {
-            this.log.push(newVal);
-            if (newVal.output) {
-                this.peerId = newVal.data;
-            }
-        }
     },
     methods: {
         sendPeer(data) {
@@ -145,6 +124,9 @@ const app = new Vue({
             if (Object.keys(data).includes('success')) {
                 this.error.show = false;
             }
+        },
+        refreshWindow() {
+            window.location.reload();
         }
     }
 });
