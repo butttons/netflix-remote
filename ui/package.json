@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "parcel src/index.html",
-        "build": "parcel build src/index.html && mv dist ../dist"
+        "build": "parcel build src/index.html && mv dist ../docs"
     },
     "keywords": [],
     "author": "",
