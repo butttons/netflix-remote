@@ -7,7 +7,9 @@ Use your phone as a remote for controlling Netflix on your Desktop.
  ![QR code](https://i.imgur.com/dvlQY1H.png "QR code")
 - Open https://butttons.github.io/netflix-remote/ or https://bit.ly/nflx-rm to open the interface. Scan the QR code or copy paste the given ID.
 - Press connect to start controlling Netflix!
+
  ![Scan code](https://i.imgur.com/0tJCvkn.png "Scan code")
+
  ![Remote](https://i.imgur.com/L4h1h5Y.png "Remote")
 
 ## Why?
